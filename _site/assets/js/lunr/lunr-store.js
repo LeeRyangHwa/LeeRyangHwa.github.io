@@ -3,5 +3,5 @@ var store = [{
         "excerpt":"GitHub Blog 서비스 테스트  ","categories": ["Blog"],
         "tags": ["Blog"],
         "url": "http://localhost:4000/blog/first-post/",
-        "teaser": null
+        "teaser": "http://localhost:4000/assets/images/logo.png"
       }]
