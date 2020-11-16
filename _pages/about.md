@@ -1,9 +1,9 @@
 ---
-title: "이 블로그 설명서"
+title: "leeryanghwa.github.io 블로그"
 permalink: /about/
 layout: single
 ---
 
-## github.io 블로그
+## 블로그 소개
 
-이 블로그는 GitHub Pages 블로그 서비스인 github.io 블로그 입니다.
+leeryanghwa.github.io 블로그는 프로그래밍에 대한 정보를 공유하는 github.io 블로그 입니다.

@@ -1,4 +1,4 @@
-I"e
+I"�
 
 <div class="masthead">
   <div class="masthead__inner-wrap">
@@ -12,9 +12,11 @@
           
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
-              <a href="https://blog.naver.com/dlfidghk">블로그 방문</a>
-            </li><li class="masthead__menu-item">
               <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://leeryanghwa.github.io/categories/">카테고리</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://blog.naver.com/dlfidghk">블로그 방문</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">

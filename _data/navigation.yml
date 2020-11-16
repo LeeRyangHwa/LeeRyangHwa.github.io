@@ -1,11 +1,11 @@
 # main links
 main:
-  - title: "블로그 방문"
-    url: https://blog.naver.com/dlfidghk
   - title: "About"
     url: /about/
-  # - title: "Sample Posts"
-  #   url: /year-archive/
+  - title: "카테고리"
+    url: https://leeryanghwa.github.io/categories/
+  - title: "블로그 방문"
+    url: https://blog.naver.com/dlfidghk
   # - title: "Sample Collections"
   #   url: /collection-archive/
   # - title: "Sitemap"
