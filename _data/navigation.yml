@@ -2,8 +2,8 @@
 main:
   - title: "블로그 방문"
     url: https://blog.naver.com/dlfidghk
-  # - title: "About"
-  #   url: https://mmistakes.github.io/minimal-mistakes/about/
+  - title: "About"
+    url: /about/
   # - title: "Sample Posts"
   #   url: /year-archive/
   # - title: "Sample Collections"
