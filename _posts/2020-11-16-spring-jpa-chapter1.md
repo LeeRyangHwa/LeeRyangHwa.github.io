@@ -2,6 +2,11 @@
 title: "JPA에 대한 소개"
 excerpt: "JPA에 대한 소개"
 
+categories:
+  - Spring
+tags:
+  - JPA
+
 last_modified_at: 2020-11-16T16:06:00-05:00
 ---
 
