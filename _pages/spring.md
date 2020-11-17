@@ -1,8 +1,7 @@
 ---
 title: "Java Spring"
-permalink: /categories/Spring/
+permalink: /categories/programCode/
 layout: category
 author_profile: true
 taxonomy: Spring
 ---
-Java Spring 프로그래밍

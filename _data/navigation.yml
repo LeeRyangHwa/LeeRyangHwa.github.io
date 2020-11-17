@@ -3,7 +3,9 @@ main:
   - title: "About"
     url: /about/
   - title: "카테고리"
-    url: https://leeryanghwa.github.io/categories/
+    url: https://leeryanghwa.github.io/categories/programCode/
+  - title: "POST"
+    url: https://leeryanghwa.github.io/categories/days/
   - title: "블로그 방문"
     url: https://blog.naver.com/dlfidghk
   # - title: "Sample Collections"
