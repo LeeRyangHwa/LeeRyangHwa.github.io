@@ -7,7 +7,7 @@ categories:
 tags:
   - JPA
 
-last_modified_at: 2020-11-16T16:00:00+00:00
+date: 2020-11-16
 toc: true
 toc_label: "JPA에 대한 소개"
 toc_sticky: true

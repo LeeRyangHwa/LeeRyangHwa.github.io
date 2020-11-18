@@ -7,7 +7,7 @@ categories:
 tags:
   - JPA
 
-last_modified_at: 2020-11-18T22:00:00+09:00
+date: 2020-11-18
 
 toc: true
 toc_label: "JPA 시작"
