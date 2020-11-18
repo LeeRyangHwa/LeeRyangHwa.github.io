@@ -1,6 +1,6 @@
 ---
 title: "Java Spring"
-permalink: /categories/
+permalink: /categories/programCode/
 layout: category
 author_profile: true
 taxonomy: Spring
