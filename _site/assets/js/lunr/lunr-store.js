@@ -6,9 +6,9 @@ var store = [{
         "teaser": "http://localhost:4000/assets/images/logo.png"
       },{
         "title": "2020.11.16",
-        "excerpt":"vuejs 체크 박스 전체 선택 &lt;th&gt; &lt;label class=\"fa-ckbox\"&gt; &lt;input type=\"checkbox\" v-model=\"checkAll\"&gt;&lt;span&gt;&lt;/span&gt; &lt;/label&gt; &lt;/th&gt; &lt;td&gt; &lt;label class=\"fa-ckbox\" v-for=\"item in list\"&gt; &lt;input type=\"checkbox\" :value=\"item.seq\" v-model=\"cklist\"&gt;&lt;span&gt;&lt;/span&gt; &lt;/label&gt; &lt;/td&gt; Data:{ all:['1','2','3'], selectList:[] }, computed : { checkAll : { //getter get: function(){ if((this.selectList.length != this..length) || this.all.length == 0) return false; else return true;...","categories": [],
+        "excerpt":"vuejs 체크 박스 전체 선택 &lt;th&gt; &lt;label class=\"fa-ckbox\"&gt; &lt;input type=\"checkbox\" v-model=\"checkAll\"&gt;&lt;span&gt;&lt;/span&gt; &lt;/label&gt; &lt;/th&gt; &lt;td&gt; &lt;label class=\"fa-ckbox\" v-for=\"item in list\"&gt; &lt;input type=\"checkbox\" :value=\"item.seq\" v-model=\"cklist\"&gt;&lt;span&gt;&lt;/span&gt; &lt;/label&gt; &lt;/td&gt; Data:{ all:['1','2','3'], selectList:[] }, computed : { checkAll : { //getter get: function(){ if((this.selectList.length != this..length) || this.all.length == 0) return false; else return true;...","categories": ["JavaScript"],
         "tags": ["Vuejs"],
-        "url": "http://localhost:4000/post-20201116/",
+        "url": "http://localhost:4000/javascript/post-20201116/",
         "teaser": "http://localhost:4000/assets/images/logo.png"
       },{
         "title": "JPA에 대한 소개",
