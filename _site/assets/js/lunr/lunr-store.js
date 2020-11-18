@@ -17,7 +17,7 @@ var store = [{
         "url": "http://localhost:4000/spring/spring-jpa-chapter1/",
         "teaser": "http://localhost:4000/assets/images/logo.png"
       },{
-        "title": "JPA시작",
+        "title": "JPA 시작",
         "excerpt":"객체 매핑 시작 Jpa를 사용하려면 가장 먼저 매핑을 해야한다. 회원 테이블 CREATE TABLE MEMBER( ID VARCHAR(255) NOT NULL, NAME VARCHAR(255), AGE INTEGER NOT NULL, PRIMARY KEY(ID) ); 회원 클래스 import lombok.Getter; import lombok.Setter; import javax.persistence.*; @Getter @Setter @Entity @Table(name=\"MEMBER\") public class Member { @Id @Column(name = \"ID\") private String id;...","categories": ["Spring"],
         "tags": ["JPA"],
         "url": "http://localhost:4000/spring/spring-jpa-chapter2/",

@@ -1,13 +1,17 @@
 ---
-title: "JPA시작"
-excerpt: "JPA시작"
+title: "JPA 시작"
+excerpt: "JPA 시작"
 
 categories:
   - Spring
 tags:
   - JPA
 
-last_modified_at: 2020-11-18T22:00:00-00:00
+last_modified_at: 2020-11-18T22:00:00+09:00
+
+toc: true
+toc_label: "JPA 시작"
+toc_sticky: true
 ---
 ## 객체 매핑 시작
 

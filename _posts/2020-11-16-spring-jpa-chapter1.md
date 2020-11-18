@@ -7,7 +7,10 @@ categories:
 tags:
   - JPA
 
-last_modified_at: 2020-11-16T16:06:00-05:00
+last_modified_at: 2020-11-16T16:00:00+00:00
+toc: true
+toc_label: "JPA에 대한 소개"
+toc_sticky: true
 ---
 
 
