@@ -1,4 +1,304 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-11-18T14:24:05+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dot com factory</title><subtitle></subtitle><author><name>SW Factory Owner</name></author><entry><title type="html">JPA 시작</title><link href="http://localhost:4000/spring/spring-jpa-chapter2/" rel="alternate" type="text/html" title="JPA 시작" /><published>2020-11-18T00:00:00+00:00</published><updated>2020-11-18T00:00:00+00:00</updated><id>http://localhost:4000/spring/spring-jpa-chapter2</id><content type="html" xml:base="http://localhost:4000/spring/spring-jpa-chapter2/">&lt;h2 id=&quot;객체-매핑-시작&quot;&gt;객체 매핑 시작&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-11-19T14:03:06+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dot com factory</title><subtitle></subtitle><author><name>SW Factory Owner</name></author><entry><title type="html">영속성관리</title><link href="http://localhost:4000/spring/spring-jpa-chapter3/" rel="alternate" type="text/html" title="영속성관리" /><published>2020-11-19T00:00:00+00:00</published><updated>2020-11-19T00:00:00+00:00</updated><id>http://localhost:4000/spring/spring-jpa-chapter3</id><content type="html" xml:base="http://localhost:4000/spring/spring-jpa-chapter3/">&lt;p&gt;JPA가 제공하는 기능은 크게 엔티티와 테이블을 매핑하는 설계 부분과 매핑한 엔티티를 실제 사용하는 부분으로 나뉜다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;엔티티 매니저: 엔티티를 저장,수정, 삭제, 조회 등 엔티티와 관련된 모든 일을 처리&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;엔티티-매니저-팩토리와-엔티티-매니저&quot;&gt;엔티티 매니저 팩토리와 엔티티 매니저&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;엔티티 매니저 팩토리&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;데이터 베이스를 하나만 사용하는 애플리케이션은 일반적으로 EntityManagerFactroy를 하나만 생성한다.&lt;/p&gt;
+
+&lt;p&gt;⇒ 비용이 많이 든다.(공장 만들기)&lt;/p&gt;
+
+&lt;p&gt;⇒ META-INF/persistence.xml에 있는 정보를 바탕으로 EntityManagerFactory를 생성한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;엔티티 매니저&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;⇒ 비용이 거의 안든다.&lt;/p&gt;
+
+&lt;p&gt;⇒ 엔티티 매니저 팩토리에서 생성된다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;엔티티 매니저 팩토리는 여러 스레드가 동시에 접근해도 안전하므로 서로 다른 스레드 간에 공유해도 되지만, 엔티티 매니저는 여러 스레드가 동시에 접근하면 동시성 문제가 발생하므로 절대 공유하면 안된다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;JPA를 이해하는데 가장 중요한 용어는 영속성 컨텍스트&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;영속성 컨텍트: 엔티티를 영구 저장하는 환경이라는 뜻&lt;/p&gt;
+
+&lt;p&gt;영속성 컨텍트는 엔티티 매니저를 생성할 때 하나 만들어지고 엔티티 매니저를 통해서 접근, 관리 할 수 있다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;엔티티의 4가지 상태&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;비영속&lt;/li&gt;
+  &lt;li&gt;영속&lt;/li&gt;
+  &lt;li&gt;준영속&lt;/li&gt;
+  &lt;li&gt;삭제&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;영속성-컨텍스트의-특징&quot;&gt;영속성 컨텍스트의 특징&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;영속성 컨텍스트와 식별자 값&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;영속성 컨텍스트와 데이터베이스 저장&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;영속성 컨텍스트가 엔티티를 관리할 때 장점&lt;/p&gt;
+    &lt;ol&gt;
+      &lt;li&gt;
+        &lt;p&gt;1차 캐시&lt;/p&gt;
+
+        &lt;p&gt;영속성 컨텍스트는 내부에 캐시를 가지고 있다. (1차 캐시라 부름)&lt;/p&gt;
+
+        &lt;p&gt;⇒ 영속성 컨텍스트 내부에 Map이 존재, @Id로 매핑한 식별자 , 값은 엔티티 인스턴스이다.&lt;/p&gt;
+
+        &lt;p&gt;em.find()를 호출 했을 때 찾는 엔티티가 1차 캐시에 엔티티가 있다면 바로 조회, 없으면 데이터베이스에서 조회 후 1차 엔티티에 저장&lt;/p&gt;
+
+        &lt;p&gt;⇒ 한번 저장된 엔티티를 조회할 경우 성능상 이점을 누릴수 있다.&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;동일성 보장&lt;/p&gt;
+
+        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nc&quot;&gt;Member&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Member&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;member1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+ &lt;span class=&quot;nc&quot;&gt;Member&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Member&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;member1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+ &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+
+        &lt;p&gt;1차 캐시에 있는 같은 엔티티 인스턴스를 반환&lt;/p&gt;
+
+        &lt;p&gt;⇒ 영속성 컨텍스트는 성능상 이점과 엔티티의 동일성을 보장&lt;/p&gt;
+
+        &lt;ul&gt;
+          &lt;li&gt;동일성 : 참조 값을 비교&lt;/li&gt;
+          &lt;li&gt;동등성: 인스턴스를 다르지만 값은 같다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;트랜잭션을 지원하는 쓰기 지연&lt;/p&gt;
+
+        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nc&quot;&gt;EntityManager&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createEntityManager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+ &lt;span class=&quot;nc&quot;&gt;EntityTransaction&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;transaction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getTransaction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+ &lt;span class=&quot;n&quot;&gt;transaction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+ &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;persist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;memberA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;persist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;memberB&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+ &lt;span class=&quot;c1&quot;&gt;//커밋 순간에 데이터베이스에 insert sql을 보낸다.&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;transaction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;commit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+
+        &lt;p&gt;엔티티 매니저는 트랜잭션을 커밋하기 직전까지 데이터베이스에 엔티티를 저장하지 않고 내부 쿼리 저장소에 모은다.( 이것을 트랜잭션을 지원하는 쓰기 지연이라 한다.)&lt;/p&gt;
+
+        &lt;p&gt;⇒ 커밋 후 → 영속성 컨텍스트를 플러시한다.&lt;/p&gt;
+
+        &lt;p&gt;&lt;strong&gt;플러시: 영속성 컨텍스트의 변경 내용을 데이터베이스에 동기화하는 작업.  등록, 수정, 삭제한 엔티티를 데이터베이스에 반영&lt;/strong&gt;&lt;/p&gt;
+
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;p&gt;SQL 수정 쿼리의 문제점&lt;/p&gt;
+
+            &lt;p&gt;두개의 수정 쿼리를 합쳐서 하나의 수정 쿼리만을 사용해도 된다.&lt;/p&gt;
+
+            &lt;p&gt;⇒ 하지만 합쳐진 쿼리는 특정 값이 입력되지 않을 수 있다. 이러한 상황을 피하기 위해 수정 쿼리를 상황에 따라 추가해야 한다.&lt;/p&gt;
+
+            &lt;p&gt;&lt;strong&gt;이러한 개발 방식의 문제점은 수정 쿼리가 많아지는 것은 물론이고 비즈니스 로직을 분석하기 위해 SQL을 계속 확인해야 한다.( 결국 비즈니스 로직이 SQL에 의존)&lt;/strong&gt;&lt;/p&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;변경 감지&lt;/p&gt;
+
+        &lt;p&gt;JPA는 엔티티를 어떻게 수정할까&lt;/p&gt;
+
+        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nc&quot;&gt;EntityManager&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createEntityManager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+ &lt;span class=&quot;nc&quot;&gt;EntityTransaction&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;transaction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getTransaction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+ &lt;span class=&quot;n&quot;&gt;transaction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+ &lt;span class=&quot;nc&quot;&gt;Member&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;memberA&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Member&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;memberA&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+ &lt;span class=&quot;c1&quot;&gt;//영속 엔티티 데이터 수정&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;memberA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setUsername&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hi&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;memberA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setAge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+ &lt;span class=&quot;c1&quot;&gt;//커밋 순간에 데이터베이스에 insert sql을 보낸다.&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;transaction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;commit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+
+        &lt;p&gt;엔티티의 변경사항을 데이터베이스에 자동으로 반영하는 기능을 변경 감지라고 한다.&lt;/p&gt;
+
+        &lt;p&gt;JPA는 엔티티를 영속성 컨텍스트에 보관할 때, 최초 상태를 복사해서 저장해두는데 이것을 스냅샷이라 한다.&lt;/p&gt;
+
+        &lt;p&gt;⇒ 스냅샷과 엔티티를 비교해서 변경된 엔티티를 찾는다.&lt;/p&gt;
+
+        &lt;p&gt;→ 변경된 엔티티가 있으면 수정 쿼리를 생성해서 쓰기 지연 SQL 저장소에 보낸다.&lt;/p&gt;
+
+        &lt;p&gt;→ 쓰기 지연 저장소의 SQL을 데이터베이스에 보낸다.&lt;/p&gt;
+
+        &lt;p&gt;→ 트랜잭션을 커밋&lt;/p&gt;
+
+        &lt;ul&gt;
+          &lt;li&gt;변경 감지는 영속성 컨텍스트가 관리하는 영속 상태의 엔티티에만 적용된다.&lt;/li&gt;
+        &lt;/ul&gt;
+
+        &lt;p&gt;JPA의 기본 전략은 엔티티의 모든 필드를 업데이트한다.&lt;/p&gt;
+
+        &lt;p&gt;이렇게 모든 필드를 사용하면 데이터베이스에 보내는 데이터 전송량이 증가하는 단점이 있지만 다음과 같은 장점으로 인해 모든 필드를 업데이트 한다.&lt;/p&gt;
+
+        &lt;ul&gt;
+          &lt;li&gt;모든 필드를 사용하면 수정 쿼리가 항상 같다. (재사용가능)&lt;/li&gt;
+          &lt;li&gt;데이터베이스에 동일한 쿼리를 보내면 데이터베이스는 이전에 한 번 파싱된 쿼리를 재사용 할 수 있다.&lt;/li&gt;
+        &lt;/ul&gt;
+
+        &lt;p&gt;⇒ 하지만 필드가 많거나 저장되는 내용이 너무 크면 수정된 데이터만 사용해서 동적으로 UPDATE SQL을 생성하는 전략을 선택하면 된다.&lt;/p&gt;
+
+        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nd&quot;&gt;@Entity&lt;/span&gt;
+ &lt;span class=&quot;nd&quot;&gt;@org&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hrbernate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;annotations&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;DynamicUpdate&lt;/span&gt;
+ &lt;span class=&quot;nd&quot;&gt;@Table&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Member&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+ &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Member&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+
+        &lt;p&gt;데이터가 존재하는 필드만으로 INSERT SQL을 동적으로 생성하는 @DynamicInsert도 있다.&lt;/p&gt;
+
+        &lt;ul&gt;
+          &lt;li&gt;컬럼이 대략 30개 이상이 되면 @DynamicUpdate를 사용한 동적 수정 쿼리가 빠르다고 한다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;지연 로딩&lt;/p&gt;
+
+        &lt;p&gt;엔티티를 삭제하려면 먼저 삭제 대상 엔티티를 조회해야한다.&lt;/p&gt;
+
+        &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;nc&quot;&gt;Member&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;memberA&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Member&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;memberA&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+ &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;remove&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;memberA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+
+        &lt;p&gt;remove()에 삭제 대상 엔티티를 넘겨주면 엔티티를 삭제한다.&lt;/p&gt;
+
+        &lt;p&gt;하지만 바로 엔티티를 삭제하는 것이 아니라 엔티티 등록과 비슷하게 삭제 쿼리를 쓰기 지연 SQL저장소에 등록한다. 이후 트랜잭션을 커밋해서 플러시를 호출하면 실제 데이터 베이스에 삭제 쿼리를 전달한다.&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;플러시&quot;&gt;플러시&lt;/h2&gt;
+
+&lt;p&gt;플러시는 영속성 컨텍스트의 변경 내용을 데이터베이스에 반영한다.&lt;/p&gt;
+
+&lt;p&gt;플러시 실행하면 일어나는 일&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;변경 감지가 동작해서 영속성 컨텍스트에 있는 모든 엔티티를 스냅샷과 비교해서 수정된 엔티티를 찾는다.&lt;/p&gt;
+
+    &lt;p&gt;수정된 엔티티는 수정 쿼리를 만들어 쓰기 지연 SQL 저장소에 등록한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;쓰기 지연 SQL 저장소의 쿼리를 데이터베이스에 전송한다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;영속성 컨텍스트를 플러시 하는 방법 3가지&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;em.flush()를 직접 호출
+    &lt;ul&gt;
+      &lt;li&gt;직접호출&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;트랜잭션 커밋 시 플러시가 자동 호출&lt;/p&gt;
+
+    &lt;p&gt;데이터베이스에 변경 내용을 SQL로 전달하지 않고 트랜잭션만 커밋하면 어떤 데이터도 데이터베이스에 반영되지 않는다.&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;트랜잭션을 커밋하기 전에 꼭 플러시를 호출해서 영속성 컨텍스트의 변경 내용을 데이터베이스에 반영해야 한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;JPQL쿼리 실행 시 플러시가 자동 호출&lt;/p&gt;
+
+    &lt;p&gt;JPQL이나 Criteria 같은 객체지향 쿼리를 호출해도 플러시가 실행된다.&lt;/p&gt;
+
+    &lt;p&gt;쿼리를 실행하기 직전에 영속성 컨텍스트를 플러시해서 변경 내용을 데이터베이스에 반영해야한다. 이러한 문제를 예방하기 위해 JPQL을 실행할 때도 플러시를 자동 호출한다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;플러시-모드-옵션&quot;&gt;플러시 모드 옵션&lt;/h3&gt;
+
+&lt;p&gt;엔티티 매니저에 플러시 모드를 직접 지정하려면 javax.persistence.FlushModeType을 사용하면 된다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://flushmodetype.AUTO&quot;&gt;FlushModeType.AUTO&lt;/a&gt; : 커밋이나 쿼리를 실행할 때 플러시(기본값)&lt;/p&gt;
+
+    &lt;p&gt;플러시 모드를 별도로 설정하지 않으면 AUTO로 동작한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;FlushModeType.COMMIT:커밋할 때만 플러시&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;플러시라도 이름으로 인해 영속성 컨텍스트에 보관된 엔티티를 지운다고 생각하면 안된다. 영속성 컨텍스트의 변경 내용을 데이터베이스에 동기화하는 것이 플러시다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;준영속&quot;&gt;준영속&lt;/h2&gt;
+
+&lt;p&gt;준영속 상태의 엔티티는 영속성 컨텍스트가 제공하는 기능을 사용할 수 없다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;em.detach(entity) : 특정 엔티티만 준영속 상태로 전환한다.&lt;/li&gt;
+  &lt;li&gt;em.clear(): 영속성 컨텍스트를 완전히 초기화한다.&lt;/li&gt;
+  &lt;li&gt;em.close(): 영속성 컨텍스트를 종료한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;detach&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;member&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//회원 엔티티를 영속성 컨텍스트에서 분리, 준영속 상태&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;엔티티 상태에 대한 용어들은 모두 영속성 컨텍스트와 관련 있는 것&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;clear&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;//영속성 컨텍스트 초기화&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;영속성 컨텍스트를 초기화해 해당 영속성 컨텍스트의 모든 엔티티를 준영속 상태로 만든다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;준영속-상태의-특징&quot;&gt;준영속 상태의 특징&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;거의 비영속 상태에 가깝다.&lt;/p&gt;
+
+    &lt;p&gt;영속성 컨텍스트가 관리하지 않으므로 1차 캐시,쓰기 지연, 변경 감지, 지연 로딩을 포함한 영속성 컨텍스트가 제공하는 어떠한 기능도 동작하지 않는다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;식별자 값을 가지고 있다.&lt;/p&gt;
+
+    &lt;p&gt;비영속 상태는 식별자 값이 없을 수 있지만 한번 영속상태였던 준영속 상태는 반드시 식별자 값을 가지고 있다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;지연 로딩을 할 수 없다.&lt;/p&gt;
+
+    &lt;p&gt;영속성 컨텍스트가 더는 관리하지 않으므로 지연 로딩 시 문제가 발생한다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;병합-merge&quot;&gt;병합: merge()&lt;/h3&gt;
+
+&lt;p&gt;준영속 상태의 엔티티를 다시 영속 상태로 변경하려면 병합을 사용하면 된다.&lt;/p&gt;
+
+&lt;p&gt;merge()메서드는 준영속 상태의 엔티티를 받아서 그 정보로 새로운 영속 상태의 엔티티를 반환한다.&lt;/p&gt;</content><author><name>SW Factory Owner</name></author><category term="Spring" /><category term="JPA" /><summary type="html">영속성관리</summary></entry><entry><title type="html">JPA 시작</title><link href="http://localhost:4000/spring/spring-jpa-chapter2/" rel="alternate" type="text/html" title="JPA 시작" /><published>2020-11-18T00:00:00+00:00</published><updated>2020-11-18T00:00:00+00:00</updated><id>http://localhost:4000/spring/spring-jpa-chapter2</id><content type="html" xml:base="http://localhost:4000/spring/spring-jpa-chapter2/">&lt;h2 id=&quot;객체-매핑-시작&quot;&gt;객체 매핑 시작&lt;/h2&gt;
 
 &lt;p&gt;Jpa를 사용하려면 가장 먼저 매핑을 해야한다.&lt;/p&gt;
 

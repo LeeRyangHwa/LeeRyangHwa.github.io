@@ -22,4 +22,10 @@ var store = [{
         "tags": ["JPA"],
         "url": "http://localhost:4000/spring/spring-jpa-chapter2/",
         "teaser": "http://localhost:4000/assets/images/logo.png"
+      },{
+        "title": "영속성관리",
+        "excerpt":"JPA가 제공하는 기능은 크게 엔티티와 테이블을 매핑하는 설계 부분과 매핑한 엔티티를 실제 사용하는 부분으로 나뉜다. 엔티티 매니저: 엔티티를 저장,수정, 삭제, 조회 등 엔티티와 관련된 모든 일을 처리 엔티티 매니저 팩토리와 엔티티 매니저 엔티티 매니저 팩토리 데이터 베이스를 하나만 사용하는 애플리케이션은 일반적으로 EntityManagerFactroy를 하나만 생성한다. ⇒ 비용이 많이 든다.(공장 만들기) ⇒...","categories": ["Spring"],
+        "tags": ["JPA"],
+        "url": "http://localhost:4000/spring/spring-jpa-chapter3/",
+        "teaser": "http://localhost:4000/assets/images/logo.png"
       }]
