@@ -1,0 +1,8 @@
+I"X<ul class="toc__menu">
+  <li><a href="#entity">@Entity</a></li>
+  <li><a href="#table">@Table</a></li>
+  <li><a href="#데이터베이스-스키마-자동-생성">데이터베이스 스키마 자동 생성</a></li>
+  <li><a href="#ddl-생성기능">@DDL 생성기능</a></li>
+  <li><a href="#기본-키-매핑">기본 키 매핑</a></li>
+</ul>
+:ET

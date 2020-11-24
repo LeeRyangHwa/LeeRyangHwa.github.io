@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-11-19T14:03:06+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dot com factory</title><subtitle></subtitle><author><name>SW Factory Owner</name></author><entry><title type="html">영속성관리</title><link href="http://localhost:4000/spring/spring-jpa-chapter3/" rel="alternate" type="text/html" title="영속성관리" /><published>2020-11-19T00:00:00+00:00</published><updated>2020-11-19T00:00:00+00:00</updated><id>http://localhost:4000/spring/spring-jpa-chapter3</id><content type="html" xml:base="http://localhost:4000/spring/spring-jpa-chapter3/">&lt;p&gt;JPA가 제공하는 기능은 크게 엔티티와 테이블을 매핑하는 설계 부분과 매핑한 엔티티를 실제 사용하는 부분으로 나뉜다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-11-24T15:01:26+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dot com factory</title><subtitle></subtitle><author><name>SW Factory Owner</name></author><entry><title type="html">3.영속성관리</title><link href="http://localhost:4000/spring/spring-jpa-chapter3/" rel="alternate" type="text/html" title="3.영속성관리" /><published>2020-11-19T00:00:00+00:00</published><updated>2020-11-19T00:00:00+00:00</updated><id>http://localhost:4000/spring/spring-jpa-chapter3</id><content type="html" xml:base="http://localhost:4000/spring/spring-jpa-chapter3/">&lt;p&gt;JPA가 제공하는 기능은 크게 엔티티와 테이블을 매핑하는 설계 부분과 매핑한 엔티티를 실제 사용하는 부분으로 나뉜다.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;엔티티 매니저: 엔티티를 저장,수정, 삭제, 조회 등 엔티티와 관련된 모든 일을 처리&lt;/li&gt;
@@ -298,7 +298,210 @@
 
 &lt;p&gt;준영속 상태의 엔티티를 다시 영속 상태로 변경하려면 병합을 사용하면 된다.&lt;/p&gt;
 
-&lt;p&gt;merge()메서드는 준영속 상태의 엔티티를 받아서 그 정보로 새로운 영속 상태의 엔티티를 반환한다.&lt;/p&gt;</content><author><name>SW Factory Owner</name></author><category term="Spring" /><category term="JPA" /><summary type="html">영속성관리</summary></entry><entry><title type="html">JPA 시작</title><link href="http://localhost:4000/spring/spring-jpa-chapter2/" rel="alternate" type="text/html" title="JPA 시작" /><published>2020-11-18T00:00:00+00:00</published><updated>2020-11-18T00:00:00+00:00</updated><id>http://localhost:4000/spring/spring-jpa-chapter2</id><content type="html" xml:base="http://localhost:4000/spring/spring-jpa-chapter2/">&lt;h2 id=&quot;객체-매핑-시작&quot;&gt;객체 매핑 시작&lt;/h2&gt;
+&lt;p&gt;merge()메서드는 준영속 상태의 엔티티를 받아서 그 정보로 새로운 영속 상태의 엔티티를 반환한다.&lt;/p&gt;</content><author><name>SW Factory Owner</name></author><category term="Spring" /><category term="JPA" /><summary type="html">영속성관리</summary></entry><entry><title type="html">4.엔티티 매핑</title><link href="http://localhost:4000/spring/spring-jpa-chapter4/" rel="alternate" type="text/html" title="4.엔티티 매핑" /><published>2020-11-19T00:00:00+00:00</published><updated>2020-11-19T00:00:00+00:00</updated><id>http://localhost:4000/spring/spring-jpa-chapter4</id><content type="html" xml:base="http://localhost:4000/spring/spring-jpa-chapter4/">&lt;p&gt;JPA를 사용하는데 가장 중요한 일은 엔티티와 테이블을 정확히 매핑하는 것이다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;객체와 테이블 매핑 : @Entity, @Table&lt;/li&gt;
+  &lt;li&gt;기본 키 매핑 : @Id&lt;/li&gt;
+  &lt;li&gt;필드와 컬럼 매핑: @Column&lt;/li&gt;
+  &lt;li&gt;연관관계 매핑 : @ManyToOne, @JoinColumn&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;entity&quot;&gt;@Entity&lt;/h3&gt;
+
+&lt;p&gt;JPA를 사용해서 테이블과 매핑할 클래스는 @Entity 어노테이션을 필수로 붙여야한다.&lt;/p&gt;
+
+&lt;p&gt;엔티티라고 부른다.&lt;/p&gt;
+
+&lt;p&gt;주의해야할 점&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;기본 생성자는 필수&lt;/li&gt;
+  &lt;li&gt;final클래스, enum, interface, inner 클래스에서는 사용할 수 없다.&lt;/li&gt;
+  &lt;li&gt;저장할 필드에 final을 사용하면 안된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;table&quot;&gt;@Table&lt;/h3&gt;
+
+&lt;p&gt;Table 속성&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;name : 매핑할 테이블 이름&lt;/li&gt;
+  &lt;li&gt;catalog : catalog 기능이 있는 데이터베이스에 catalog를 매핑&lt;/li&gt;
+  &lt;li&gt;schema : schema 기능이 있는 데이터베이스에서 schema를 매핑&lt;/li&gt;
+  &lt;li&gt;uniqueConstraints : DDL 생성 시에 유니크 제약조건을 만든다. 스키마 자동생성을 이용해서 DDL을 만들때만 사용&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;데이터베이스-스키마-자동-생성&quot;&gt;데이터베이스 스키마 자동 생성&lt;/h3&gt;
+
+&lt;p&gt;JPA는 데이터베이스 스키마를 자동으로 생성하는 기능을 지원한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;자동생성 사용법&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hibernate.hbm2ddl.auto&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;create&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hibernate.show_sql&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- DDL을 출려할 수 있다. --&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이 속성을 추가하면 애플리케이션 실행 시점에 데이터베이스 테이블을 자동으로 생성한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://hibernate.hbm2ddl.auto&quot;&gt;hibernate.hbm2ddl.auto&lt;/a&gt; 속성&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;create :  기존 테이블을 삭제하고 새로 생성&lt;/li&gt;
+  &lt;li&gt;create-drop : create 속성에 추가로 애플리케이션을 종료할 때 생성한 DDL을 제거&lt;/li&gt;
+  &lt;li&gt;update : 데이터베이스 테이블과 엔티티 매핑정보를 비교해서 변경 사항만 수정&lt;/li&gt;
+  &lt;li&gt;validate : 데이터 베이스 엔티티 매핑정보 를비교해서 차이가 있으면 경고를 남기고 애플리케이션을 실행하지 않는다&lt;/li&gt;
+  &lt;li&gt;none : 자동 생성 기능을 사용하지 않으려면 &lt;a href=&quot;http://hibernate.hbm2ddl.auto&quot;&gt;hibernate.hbm2ddl.auto&lt;/a&gt; 속성 자체를 삭제하거나 유효하지 않은 옵션 값을 주면된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;ddl-생성기능&quot;&gt;@DDL 생성기능&lt;/h3&gt;
+
+&lt;p&gt;@Column(name=”NAME”, nullable = false, length = 10) « 제약을 추가할수 있다.&lt;/p&gt;
+
+&lt;h3 id=&quot;기본-키-매핑&quot;&gt;기본 키 매핑&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;직접 할당 : 기본 키를 애플리케이션에서 직접 할당&lt;/p&gt;
+
+    &lt;p&gt;@Id(@GeneratedValue : 자동 생성 전략)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;자동 할당 : 대리 키 사용 방식&lt;/p&gt;
+
+    &lt;p&gt;@IDENTITY&lt;/p&gt;
+
+    &lt;p&gt;기본 키 생성을 데이터베이스에 위임하는 전략&lt;/p&gt;
+
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nd&quot;&gt;@Id&lt;/span&gt;
+  &lt;span class=&quot;nd&quot;&gt;@GenerateValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Strategy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;GenerationType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;IDENTITY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;@SEQUENCE&lt;/p&gt;
+
+    &lt;p&gt;유일한 값을 순서대로 생성하는 특별한 데이터베이스 오브젝트&lt;/p&gt;
+
+    &lt;p&gt;시퀀스를 사용해서 기본 키를 생성&lt;/p&gt;
+
+    &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;CREATE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TABLE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;BOADE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;BIGINT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NOT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;NULL&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;PRIMARY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;KEY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;DATA&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;VARCHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nd&quot;&gt;@Entity&lt;/span&gt;
+  &lt;span class=&quot;nd&quot;&gt;@SequenceGenerator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+  	&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;BOARD_SEQ_GENERATOR&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 식별자 생성기 이름&lt;/span&gt;
+  	&lt;span class=&quot;n&quot;&gt;sequenceName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;BOARD_SEQ&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//매핑할 데이터베이스 시퀀스 이름&lt;/span&gt;
+  	&lt;span class=&quot;n&quot;&gt;initialValue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// DDL을 생성할 때 처음 시작하는 수르 저장&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;allocationSize&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 시퀀스 한 번 호출에 증가하는 수&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;                   
+  	&lt;span class=&quot;nd&quot;&gt;@Id&lt;/span&gt;
+  	&lt;span class=&quot;nd&quot;&gt;@GeneratedValue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strategy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;GenerationType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;SEQUENCE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;generator&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;BOARD_SEQ_GENERATOR&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  	&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;시퀀스 사용 코드&lt;/p&gt;
+
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;logic&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;EntityManager&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+   &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;persist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+   &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;board.id = &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;### Table 전략&lt;/p&gt;
+
+    &lt;p&gt;Table전략은 키 생성 전용 테이블을 하나 만들고 여기에 이름과 값으로 사용할 컬럼을 만들어 데이터베이스 시퀀스를 흉내내는 전략이다.&lt;/p&gt;
+
+    &lt;p&gt;Table 전략을 사용하려면 키 생성 용도로 사용할 테이블을 만들어야한다.&lt;/p&gt;
+
+    &lt;div class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;테이블&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;전략&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;키&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;생성&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DDL&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;create&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;table&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;MY_SEQUENCES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;sequence_name&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;varchar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;next_val&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bigint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;primary&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sequence_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;sequence_name 컬럼을 시퀀스 이름으로 사용하고 next_val컬럼을 시퀀스 값으로 사용한다.&lt;/p&gt;
+
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nd&quot;&gt;@Entity&lt;/span&gt;
+  &lt;span class=&quot;nd&quot;&gt;@TableCenerator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;BOARD_SEQ_GENERATOR&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;talbe&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;MY_SEQUENCES&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;pkColumValue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;BOARD_SEQ&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;allocationSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;nd&quot;&gt;@Id&lt;/span&gt;
+   &lt;span class=&quot;nd&quot;&gt;@GeneratedValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strategy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;GenerationType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;TABLE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+  		&lt;span class=&quot;n&quot;&gt;generator&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;BOARD_SEQ_GENERATOR&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;Table 전략 매핑 순서&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;@TalbeGenerator를 사용해서 테이블 키 생성기를 등록&lt;/li&gt;
+      &lt;li&gt;그후 생성한 테이블 MY_SEQUENCES 테이블을 키 생성용 테이블로 매핑&lt;/li&gt;
+      &lt;li&gt;GenerationType.TABLE을 선택&lt;/li&gt;
+      &lt;li&gt;@GeneratedValue.generator에 방금 만든 테이블 키 생성기를 지정&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;⇒ 이제부터 id 식별자 값은 BORAD_SEQ_GENERATOR 테이블 키 생성기가 할당&lt;/p&gt;
+
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;logic&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;EntityManager&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+   &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;persist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+   &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;board.id = &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;### AUTO 전략&lt;/p&gt;
+
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nd&quot;&gt;@Entity&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+   &lt;span class=&quot;nd&quot;&gt;@Id&lt;/span&gt;
+   &lt;span class=&quot;nd&quot;&gt;@GeneratedValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strategy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;GenerationType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;AUTO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+   &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;//,,,,,,&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;@GeneratedValue.strategy의 기본값은 AUTO다 . 따라서 다음과 같이 사용해도 결과는 값다.&lt;/p&gt;
+
+    &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nd&quot;&gt;@Id&lt;/span&gt;
+  &lt;span class=&quot;nd&quot;&gt;@GeneratedValue&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;AUTO 전략의 장점은 데이터베이스를 변경해도 코드를 수정할 필요가 없다는 것이다.&lt;/p&gt;
+
+    &lt;p&gt;## 필드와 컬럼 매핑: 레퍼런스&lt;/p&gt;
+
+    &lt;p&gt;JPA가 제공하는 필드와 컬럼 매핑용 어노테이션들을 레퍼런스 형식으로 정리해보았다.&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;필드와 컬럼 매핑
+        &lt;ul&gt;
+          &lt;li&gt;@Column : 컬럼을 매핑한다.&lt;/li&gt;
+          &lt;li&gt;@Enumerated : 자바의 enum 타입을 매핑한다.&lt;/li&gt;
+          &lt;li&gt;@Temporal : 날짜 타입을 매핑한다.&lt;/li&gt;
+          &lt;li&gt;@Lob : BLOB, CLOB 타입을 매핑한다.&lt;/li&gt;
+          &lt;li&gt;@Transient : 특정 필드를 데이터베이스에 매핑하지 않는다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;기타
+        &lt;ul&gt;
+          &lt;li&gt;@Access : JPA가 엔티티에 접근하는 방식을 지정한다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>SW Factory Owner</name></author><category term="Spring" /><category term="JPA" /><summary type="html">엔티티 매핑</summary></entry><entry><title type="html">2.JPA 시작</title><link href="http://localhost:4000/spring/spring-jpa-chapter2/" rel="alternate" type="text/html" title="2.JPA 시작" /><published>2020-11-18T00:00:00+00:00</published><updated>2020-11-18T00:00:00+00:00</updated><id>http://localhost:4000/spring/spring-jpa-chapter2</id><content type="html" xml:base="http://localhost:4000/spring/spring-jpa-chapter2/">&lt;h2 id=&quot;객체-매핑-시작&quot;&gt;객체 매핑 시작&lt;/h2&gt;
 
 &lt;p&gt;Jpa를 사용하려면 가장 먼저 매핑을 해야한다.&lt;/p&gt;
 
@@ -534,7 +737,7 @@
  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;//…………&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>SW Factory Owner</name></author><category term="JavaScript" /><category term="Vuejs" /><summary type="html">체크 박스 전체 선택</summary></entry><entry><title type="html">JPA에 대한 소개</title><link href="http://localhost:4000/spring/spring-jpa-chapter1/" rel="alternate" type="text/html" title="JPA에 대한 소개" /><published>2020-11-16T00:00:00+00:00</published><updated>2020-11-16T00:00:00+00:00</updated><id>http://localhost:4000/spring/spring-jpa-chapter1</id><content type="html" xml:base="http://localhost:4000/spring/spring-jpa-chapter1/">&lt;h2 id=&quot;jpa에-대한-소개&quot;&gt;JPA에 대한 소개&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>SW Factory Owner</name></author><category term="JavaScript" /><category term="Vuejs" /><summary type="html">체크 박스 전체 선택</summary></entry><entry><title type="html">1.JPA에 대한 소개</title><link href="http://localhost:4000/spring/spring-jpa-chapter1/" rel="alternate" type="text/html" title="1.JPA에 대한 소개" /><published>2020-11-16T00:00:00+00:00</published><updated>2020-11-16T00:00:00+00:00</updated><id>http://localhost:4000/spring/spring-jpa-chapter1</id><content type="html" xml:base="http://localhost:4000/spring/spring-jpa-chapter1/">&lt;h2 id=&quot;jpa에-대한-소개&quot;&gt;JPA에 대한 소개&lt;/h2&gt;
 
 &lt;p&gt;객체와 관계형 데이터 베이스 간의 차이를 중간에서 해결해 주는 ORM 프레임워크가 있다. JPA는 이러한 자바 진영의 ORM 기술 표준이다.&lt;/p&gt;
 

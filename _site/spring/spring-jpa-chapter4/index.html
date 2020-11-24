@@ -1,0 +1,866 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.21.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>4.엔티티 매핑 - Dot com factory</title>
+<meta name="description" content="엔티티 매핑">
+
+
+  <meta name="author" content="SW Factory Owner">
+  
+  <meta property="article:author" content="SW Factory Owner">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Dot com factory">
+<meta property="og:title" content="4.엔티티 매핑">
+<meta property="og:url" content="http://localhost:4000/spring/spring-jpa-chapter4/">
+
+
+  <meta property="og:description" content="엔티티 매핑">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/photo_default.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2020-11-19T00:00:00+00:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/spring/spring-jpa-chapter4/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "SW Factory Owner",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Dot com factory Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo.png" alt=""></a>
+        
+        <a class="site-title" href="/">
+          Dot com factory
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">카테고리</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">POST</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://blog.naver.com/dlfidghk">블로그 방문</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/photo_default.png" alt="SW Factory Owner" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">SW Factory Owner</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>소소한 기록들</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">South Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:iryanghwa@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/LeeRyangHwa" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="4.엔티티 매핑">
+    <meta itemprop="description" content="엔티티 매핑">
+    <meta itemprop="datePublished" content="2020-11-19T00:00:00+00:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">4.엔티티 매핑
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 엔티티 매핑</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#entity">@Entity</a></li>
+  <li><a href="#table">@Table</a></li>
+  <li><a href="#데이터베이스-스키마-자동-생성">데이터베이스 스키마 자동 생성</a></li>
+  <li><a href="#ddl-생성기능">@DDL 생성기능</a></li>
+  <li><a href="#기본-키-매핑">기본 키 매핑</a></li>
+</ul>
+
+            </nav>
+          </aside>
+        
+        <p>JPA를 사용하는데 가장 중요한 일은 엔티티와 테이블을 정확히 매핑하는 것이다.</p>
+
+<ul>
+  <li>객체와 테이블 매핑 : @Entity, @Table</li>
+  <li>기본 키 매핑 : @Id</li>
+  <li>필드와 컬럼 매핑: @Column</li>
+  <li>연관관계 매핑 : @ManyToOne, @JoinColumn</li>
+</ul>
+
+<h3 id="entity">@Entity</h3>
+
+<p>JPA를 사용해서 테이블과 매핑할 클래스는 @Entity 어노테이션을 필수로 붙여야한다.</p>
+
+<p>엔티티라고 부른다.</p>
+
+<p>주의해야할 점</p>
+
+<ul>
+  <li>기본 생성자는 필수</li>
+  <li>final클래스, enum, interface, inner 클래스에서는 사용할 수 없다.</li>
+  <li>저장할 필드에 final을 사용하면 안된다.</li>
+</ul>
+
+<h3 id="table">@Table</h3>
+
+<p>Table 속성</p>
+
+<ul>
+  <li>name : 매핑할 테이블 이름</li>
+  <li>catalog : catalog 기능이 있는 데이터베이스에 catalog를 매핑</li>
+  <li>schema : schema 기능이 있는 데이터베이스에서 schema를 매핑</li>
+  <li>uniqueConstraints : DDL 생성 시에 유니크 제약조건을 만든다. 스키마 자동생성을 이용해서 DDL을 만들때만 사용</li>
+</ul>
+
+<h3 id="데이터베이스-스키마-자동-생성">데이터베이스 스키마 자동 생성</h3>
+
+<p>JPA는 데이터베이스 스키마를 자동으로 생성하는 기능을 지원한다.</p>
+
+<ul>
+  <li>자동생성 사용법</li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"hibernate.hbm2ddl.auto"</span> <span class="na">value=</span><span class="s">"create"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"hibernate.show_sql"</span> <span class="na">value=</span><span class="s">"true"</span><span class="nt">/&gt;</span> <span class="c">&lt;!-- DDL을 출려할 수 있다. --&gt;</span>
+</code></pre></div></div>
+
+<p>이 속성을 추가하면 애플리케이션 실행 시점에 데이터베이스 테이블을 자동으로 생성한다.</p>
+
+<p><a href="http://hibernate.hbm2ddl.auto">hibernate.hbm2ddl.auto</a> 속성</p>
+
+<ul>
+  <li>create :  기존 테이블을 삭제하고 새로 생성</li>
+  <li>create-drop : create 속성에 추가로 애플리케이션을 종료할 때 생성한 DDL을 제거</li>
+  <li>update : 데이터베이스 테이블과 엔티티 매핑정보를 비교해서 변경 사항만 수정</li>
+  <li>validate : 데이터 베이스 엔티티 매핑정보 를비교해서 차이가 있으면 경고를 남기고 애플리케이션을 실행하지 않는다</li>
+  <li>none : 자동 생성 기능을 사용하지 않으려면 <a href="http://hibernate.hbm2ddl.auto">hibernate.hbm2ddl.auto</a> 속성 자체를 삭제하거나 유효하지 않은 옵션 값을 주면된다.</li>
+</ul>
+
+<h3 id="ddl-생성기능">@DDL 생성기능</h3>
+
+<p>@Column(name=”NAME”, nullable = false, length = 10) « 제약을 추가할수 있다.</p>
+
+<h3 id="기본-키-매핑">기본 키 매핑</h3>
+
+<ul>
+  <li>
+    <p>직접 할당 : 기본 키를 애플리케이션에서 직접 할당</p>
+
+    <p>@Id(@GeneratedValue : 자동 생성 전략)</p>
+  </li>
+  <li>
+    <p>자동 할당 : 대리 키 사용 방식</p>
+
+    <p>@IDENTITY</p>
+
+    <p>기본 키 생성을 데이터베이스에 위임하는 전략</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nd">@Id</span>
+  <span class="nd">@GenerateValue</span><span class="o">(</span><span class="nc">Strategy</span> <span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.</span><span class="na">IDENTITY</span><span class="o">)</span>
+  <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+</code></pre></div>    </div>
+
+    <p>@SEQUENCE</p>
+
+    <p>유일한 값을 순서대로 생성하는 특별한 데이터베이스 오브젝트</p>
+
+    <p>시퀀스를 사용해서 기본 키를 생성</p>
+
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">BOADE</span><span class="p">(</span>
+   <span class="n">ID</span> <span class="nb">BIGINT</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+   <span class="k">DATA</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>
+  <span class="p">)</span>
+</code></pre></div>    </div>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nd">@Entity</span>
+  <span class="nd">@SequenceGenerator</span><span class="o">(</span>
+  	<span class="n">name</span> <span class="o">=</span> <span class="s">"BOARD_SEQ_GENERATOR"</span><span class="o">,</span> <span class="c1">// 식별자 생성기 이름</span>
+  	<span class="n">sequenceName</span> <span class="o">=</span> <span class="s">"BOARD_SEQ"</span><span class="o">,</span> <span class="c1">//매핑할 데이터베이스 시퀀스 이름</span>
+  	<span class="n">initialValue</span> <span class="o">=</span> <span class="mi">1</span><span class="o">,</span><span class="c1">// DDL을 생성할 때 처음 시작하는 수르 저장</span>
+   <span class="n">allocationSize</span> <span class="o">=</span> <span class="mi">1</span><span class="o">)</span> <span class="c1">// 시퀀스 한 번 호출에 증가하는 수</span>
+  <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Board</span><span class="o">{</span>                   
+  	<span class="nd">@Id</span>
+  	<span class="nd">@GeneratedValue</span> <span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.</span><span class="na">SEQUENCE</span><span class="o">,</span> <span class="n">generator</span> <span class="o">=</span> <span class="s">"BOARD_SEQ_GENERATOR"</span><span class="o">)</span>
+  	<span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+  <span class="o">}</span>
+</code></pre></div>    </div>
+
+    <p>시퀀스 사용 코드</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">logic</span><span class="o">(</span><span class="nc">EntityManager</span> <span class="n">em</span><span class="o">){</span>
+   <span class="nc">Board</span> <span class="n">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Board</span><span class="o">();</span>
+   <span class="n">em</span><span class="o">.</span><span class="na">persist</span><span class="o">(</span><span class="n">board</span><span class="o">);</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"board.id = "</span> <span class="o">+</span> <span class="n">board</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+  <span class="o">}</span>
+</code></pre></div>    </div>
+
+    <p>### Table 전략</p>
+
+    <p>Table전략은 키 생성 전용 테이블을 하나 만들고 여기에 이름과 값으로 사용할 컬럼을 만들어 데이터베이스 시퀀스를 흉내내는 전략이다.</p>
+
+    <p>Table 전략을 사용하려면 키 생성 용도로 사용할 테이블을 만들어야한다.</p>
+
+    <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">//</span><span class="err">테이블</span> <span class="err">전략</span> <span class="err">키</span> <span class="err">생성</span> <span class="n">DDL</span>
+  <span class="k">create</span> <span class="k">table</span> <span class="n">MY_SEQUENCES</span><span class="p">(</span>
+   <span class="n">sequence_name</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+   <span class="n">next_val</span> <span class="nb">bigint</span><span class="p">,</span>
+   <span class="k">primary</span> <span class="k">key</span><span class="p">(</span><span class="n">sequence_name</span><span class="p">)</span>
+  <span class="p">)</span>
+</code></pre></div>    </div>
+
+    <p>sequence_name 컬럼을 시퀀스 이름으로 사용하고 next_val컬럼을 시퀀스 값으로 사용한다.</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nd">@Entity</span>
+  <span class="nd">@TableCenerator</span><span class="o">(</span>
+   <span class="n">name</span> <span class="o">=</span> <span class="s">"BOARD_SEQ_GENERATOR"</span><span class="o">,</span>
+   <span class="n">talbe</span> <span class="o">=</span> <span class="s">"MY_SEQUENCES"</span><span class="o">,</span>
+   <span class="n">pkColumValue</span> <span class="o">=</span> <span class="s">"BOARD_SEQ"</span><span class="o">,</span> <span class="n">allocationSize</span><span class="o">=</span><span class="mi">1</span><span class="o">)</span>
+  <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Board</span><span class="o">{</span>
+   <span class="nd">@Id</span>
+   <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span><span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.</span><span class="na">TABLE</span><span class="o">,</span>
+  		<span class="n">generator</span> <span class="o">=</span> <span class="s">"BOARD_SEQ_GENERATOR"</span><span class="o">)</span>
+  <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+</code></pre></div>    </div>
+
+    <p>Table 전략 매핑 순서</p>
+
+    <ul>
+      <li>@TalbeGenerator를 사용해서 테이블 키 생성기를 등록</li>
+      <li>그후 생성한 테이블 MY_SEQUENCES 테이블을 키 생성용 테이블로 매핑</li>
+      <li>GenerationType.TABLE을 선택</li>
+      <li>@GeneratedValue.generator에 방금 만든 테이블 키 생성기를 지정</li>
+    </ul>
+
+    <p>⇒ 이제부터 id 식별자 값은 BORAD_SEQ_GENERATOR 테이블 키 생성기가 할당</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">logic</span><span class="o">(</span><span class="nc">EntityManager</span> <span class="n">em</span><span class="o">){</span>
+   <span class="nc">Board</span> <span class="n">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Board</span><span class="o">();</span>
+   <span class="n">em</span><span class="o">.</span><span class="na">persist</span><span class="o">(</span><span class="n">board</span><span class="o">);</span>
+   <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"board.id = "</span> <span class="o">+</span> <span class="n">board</span><span class="o">.</span><span class="na">getId</span><span class="o">());</span>
+  <span class="o">}</span>
+</code></pre></div>    </div>
+
+    <p>### AUTO 전략</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nd">@Entity</span>
+  <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Board</span><span class="o">{</span>
+   <span class="nd">@Id</span>
+   <span class="nd">@GeneratedValue</span><span class="o">(</span><span class="n">strategy</span> <span class="o">=</span> <span class="nc">GenerationType</span><span class="o">.</span><span class="na">AUTO</span><span class="o">)</span>
+   <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+  <span class="c1">//,,,,,,</span>
+  <span class="o">}</span>
+</code></pre></div>    </div>
+
+    <p>@GeneratedValue.strategy의 기본값은 AUTO다 . 따라서 다음과 같이 사용해도 결과는 값다.</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nd">@Id</span>
+  <span class="nd">@GeneratedValue</span>
+  <span class="kd">private</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+</code></pre></div>    </div>
+
+    <p>AUTO 전략의 장점은 데이터베이스를 변경해도 코드를 수정할 필요가 없다는 것이다.</p>
+
+    <p>## 필드와 컬럼 매핑: 레퍼런스</p>
+
+    <p>JPA가 제공하는 필드와 컬럼 매핑용 어노테이션들을 레퍼런스 형식으로 정리해보았다.</p>
+
+    <ul>
+      <li>필드와 컬럼 매핑
+        <ul>
+          <li>@Column : 컬럼을 매핑한다.</li>
+          <li>@Enumerated : 자바의 enum 타입을 매핑한다.</li>
+          <li>@Temporal : 날짜 타입을 매핑한다.</li>
+          <li>@Lob : BLOB, CLOB 타입을 매핑한다.</li>
+          <li>@Transient : 특정 필드를 데이터베이스에 매핑하지 않는다.</li>
+        </ul>
+      </li>
+      <li>기타
+        <ul>
+          <li>@Access : JPA가 엔티티에 접근하는 방식을 지정한다.</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#jpa" class="page__taxonomy-item" rel="tag">JPA</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#spring" class="page__taxonomy-item" rel="tag">Spring</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-11-19T00:00:00+00:00">November 19, 2020</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=4.%EC%97%94%ED%8B%B0%ED%8B%B0+%EB%A7%A4%ED%95%91%20http%3A%2F%2Flocalhost%3A4000%2Fspring%2Fspring-jpa-chapter4%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fspring%2Fspring-jpa-chapter4%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fspring%2Fspring-jpa-chapter4%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/spring/spring-jpa-chapter3/" class="pagination--pager" title="3.영속성관리
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src="/assets/images/logo.png" alt="">
+      </div>
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/spring/spring-jpa-chapter3/" rel="permalink">3.영속성관리
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">영속성관리
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src="/assets/images/logo.png" alt="">
+      </div>
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/spring/spring-jpa-chapter2/" rel="permalink">2.JPA 시작
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">JPA 시작
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src="/assets/images/logo.png" alt="">
+      </div>
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/spring/spring-jpa-chapter1/" rel="permalink">1.JPA에 대한 소개
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">JPA에 대한 소개
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src="/assets/images/logo.png" alt="">
+      </div>
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/javascript/post-20201116/" rel="permalink">Vuejs 체크 박스 전체 선택
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">체크 박스 전체 선택
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/LeeRyangHwa" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 SW Factory Owner. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
