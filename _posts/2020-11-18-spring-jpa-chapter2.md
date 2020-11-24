@@ -1,5 +1,5 @@
 ---
-title: "JPA 시작"
+title: "2.JPA 시작"
 excerpt: "JPA 시작"
 
 categories:

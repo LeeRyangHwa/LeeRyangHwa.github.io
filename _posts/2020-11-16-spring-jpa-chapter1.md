@@ -1,5 +1,5 @@
 ---
-title: "JPA에 대한 소개"
+title: "1.JPA에 대한 소개"
 excerpt: "JPA에 대한 소개"
 
 categories:
