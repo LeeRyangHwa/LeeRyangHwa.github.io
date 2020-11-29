@@ -34,4 +34,10 @@ var store = [{
         "tags": ["JPA"],
         "url": "http://localhost:4000/spring/spring-jpa-chapter4/",
         "teaser": "http://localhost:4000/assets/images/logo.png"
+      },{
+        "title": "5.연관관계 매핑 기초",
+        "excerpt":"객체의 참조와 테이블의 외래 키를 매핑하는 것이 이 장이 목표이다. 단방향 연관관계 연관관계 중에선 다대일(N:1) 단방향 관계를 가장 먼저 이해해야 한다. 회원과 팀이 있다. 회원은 하나의 팀에만 소속될 수 있다. 회원과 팀은 다대일 관계다. 객체 연관 관계 테이블 연관관계 회원 테이블은 TEAM_ID 외래키로 팀 테이블과 연관관계를 맺는다. 회원 테이블과 팀...","categories": ["Spring"],
+        "tags": ["JPA"],
+        "url": "http://localhost:4000/spring/spring-jpa-chapter5/",
+        "teaser": "http://localhost:4000/assets/images/logo.png"
       }]
