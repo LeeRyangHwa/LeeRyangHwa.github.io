@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-11-30T14:29:37+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dot com factory</title><subtitle></subtitle><author><name>SW Factory Owner</name></author><entry><title type="html">5.연관관계 매핑 기초</title><link href="http://localhost:4000/spring/spring-jpa-chapter5/" rel="alternate" type="text/html" title="5.연관관계 매핑 기초" /><published>2020-11-29T00:00:00+00:00</published><updated>2020-11-29T00:00:00+00:00</updated><id>http://localhost:4000/spring/spring-jpa-chapter5</id><content type="html" xml:base="http://localhost:4000/spring/spring-jpa-chapter5/">&lt;p&gt;객체의 참조와 테이블의 외래 키를 매핑하는 것이 이 장이 목표이다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-11-30T15:06:21+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Dot com factory</title><subtitle></subtitle><author><name>SW Factory Owner</name></author><entry><title type="html">5.연관관계 매핑 기초</title><link href="http://localhost:4000/spring/spring-jpa-chapter5/" rel="alternate" type="text/html" title="5.연관관계 매핑 기초" /><published>2020-11-29T00:00:00+00:00</published><updated>2020-11-29T00:00:00+00:00</updated><id>http://localhost:4000/spring/spring-jpa-chapter5</id><content type="html" xml:base="http://localhost:4000/spring/spring-jpa-chapter5/">&lt;p&gt;객체의 참조와 테이블의 외래 키를 매핑하는 것이 이 장이 목표이다.&lt;/p&gt;
 
 &lt;h1 id=&quot;단방향-연관관계&quot;&gt;단방향 연관관계&lt;/h1&gt;
 
@@ -1025,5 +1025,55 @@ ORM 프레임워크는 단순히 SQL을 개발자 대신 생성해서 데이터�
     &lt;p&gt;표준
   JPA는 자바진영의 ORM기술 표본이기 때문에 다른 구현 기술로 손쉽게 변경가능&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>SW Factory Owner</name></author><category term="Spring" /><category term="JPA" /><summary type="html">JPA에 대한 소개</summary></entry><entry><title type="html">github.io 블로그 시작하기</title><link href="http://localhost:4000/first-post/" rel="alternate" type="text/html" title="github.io 블로그 시작하기" /><published>2020-11-10T00:00:00+00:00</published><updated>2020-11-10T21:06:00+00:00</updated><id>http://localhost:4000/first-post</id><content type="html" xml:base="http://localhost:4000/first-post/">&lt;p&gt;GitHub Blog 서비스 테스트
+&lt;/ul&gt;</content><author><name>SW Factory Owner</name></author><category term="Spring" /><category term="JPA" /><summary type="html">JPA에 대한 소개</summary></entry><entry><title type="html">Vuejs 소개</title><link href="http://localhost:4000/javascript/vuejs/" rel="alternate" type="text/html" title="Vuejs 소개" /><published>2020-11-15T00:00:00+00:00</published><updated>2020-11-15T00:00:00+00:00</updated><id>http://localhost:4000/javascript/vuejs</id><content type="html" xml:base="http://localhost:4000/javascript/vuejs/">&lt;h2 id=&quot;vuejs-소개&quot;&gt;VueJs 소개&lt;/h2&gt;
+
+&lt;p&gt;vuejs는 프론트엔드 자바스크립트 프레임 워크다.
+Angular, Backbone, React에 비해 매우 작고 가벼우며 복잡도도 낮다.&lt;/p&gt;
+
+&lt;h3 id=&quot;react와의-비교&quot;&gt;React와의 비교&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;공통점&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;가상 DOM을 사용&lt;/li&gt;
+  &lt;li&gt;컴포넌트를 제공&lt;/li&gt;
+  &lt;li&gt;뷰에만 집중을 하고, 라우터, 상태관리를 위해선 써드파티 라이브러리를 사용&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;jsx-vs-template&quot;&gt;JSX vs Template&lt;/h3&gt;
+
+&lt;p&gt;React에서는 JSX를 사용&lt;/p&gt;
+
+&lt;p&gt;Vue에서는 Template를 사용&lt;/p&gt;
+
+&lt;p&gt;⇒ 하지만 Vue에서도 원한다면 JSX를 사용할 수 있다. 템블릿을 사용할 때의 장점은 HTML 파일에 바로 사용할 수 있다는 점&lt;/p&gt;
+
+&lt;h3 id=&quot;hello-vue-예제&quot;&gt;Hello, Vue 예제&lt;/h3&gt;
+
+&lt;div class=&quot;language-jsx highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#app&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 어떤 엘리먼트에 적용을 할 지 정합니다&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// data 는 해당 뷰에서 사용할 정보를 지닙니다&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;   
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;utf-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;viewport&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;content=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;width=device-width&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;JS Bin&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+  
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;app&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 자바스크립트에서 el: #app 코드로 id를 정했었다.--&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Hello, &lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 자바스크립트와 연결  --&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://unpkg.com/vue/dist/vue.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>SW Factory Owner</name></author><category term="JavaScript" /><category term="Vuejs" /><summary type="html">Vuejs 소개</summary></entry><entry><title type="html">github.io 블로그 시작하기</title><link href="http://localhost:4000/first-post/" rel="alternate" type="text/html" title="github.io 블로그 시작하기" /><published>2020-11-10T00:00:00+00:00</published><updated>2020-11-10T21:06:00+00:00</updated><id>http://localhost:4000/first-post</id><content type="html" xml:base="http://localhost:4000/first-post/">&lt;p&gt;GitHub Blog 서비스 테스트
 GitHub Blog 시작&lt;/p&gt;</content><author><name>SW Factory Owner</name></author><summary type="html">GitHub Blog 서비스인 github.io 블로그 시작</summary></entry></feed>
