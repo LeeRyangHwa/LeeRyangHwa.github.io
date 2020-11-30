@@ -7,7 +7,7 @@ categories:
 tags:
   - JPA
 
-date: 2020-11-19
+date: 2020-11-29
 
 toc: true
 toc_label: "연관관계 매핑 기초"
